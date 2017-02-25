@@ -36,12 +36,105 @@
                     }); 
 </script>
 
-<br>
+<style>
+                    correction {
+                        background-color:orange;
+                        color: white;
+                    }
+                    
+                    .corrected {
+                        text-decoration: line-through;
+                        background-color:palevioletred;
+                    }
+                </style>
+
+<p>I go to school 
+                            <original>on</original>
+                            <correction>by</correction> bus.
+                            <original> Slept</original>
+                            <correction>Sleeping</correction> is the
+                            <original> goodest</original>
+                            <correction>best</correction> activity.
+
+ <br>
  <button id="toggle" class="btn btn-primary">Toggle answer</button>
 
+<script>
+                    $(function() {
+                        var showCorrection = false;
+                        $('#toggle').click(function() {
+                            if (showCorrection) {
+                                $('correction').hide();
+                                $('original').removeClass('corrected');
+                                showCorrection = false;
+                            } else {
+                                $('correction').show();
+                                $('original').addClass('corrected');
+                                showCorrection = true;
+                            }
+                        });
+                        $('correction').hide();
+                    })
+                </script>
 
+<div id="myfigure" class="chart">
+                            <div class="bar-block" style="height: 80px; left:5"> 80 </div>
+                            <div class="bar-block" style="height: 60px; left:45px"> 60 </div>
+                            <div class="bar-block" style="height: 90px; left:85px"> 90 </div>
+                            <div class="bar-block" style="height: 110px; left:125px"> 110 </div>
+                            <div class="bar-block" style="height: 20px; left:165px"> 20 </div>
+                        </div>
 
+<button id="add" class="btn btn-primary "> Add Oil! </button>
 
+<style>
+                    .bar-block {
+                        background-color:pink;
+                        color:black;
+                        text-align: center;
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+                        position: absolute;
+                        width: 30px;
+                        bottom: 0;
+                    }
+                    
+                    .chart {
+                        position: relative;
+                        width: 200px;
+                        height: 200px;
+                        border: 1px dashed;
+                        margin-bottom: 10px;
+                    }
+                </style>
+
+<script>
+                    $(function() {
+                        $('#add').click(function() {
+                            $('.bar-block').map(function() {
+                                $(this).text($(this).text() * 1 + 5);
+                                var height_px = $(this).css('height');
+                                var height = height_px.substr(0, height_px.length - 2);
+                                $(this).css('height', (height * 1 + 5) + 'px');
+                            });
+                        });
+                    });
+                </script>
+
+<button id="add-animate" class="btn btn-primary "> Fighting! </button>
+
+<script>
+                    $(function() {
+                        $('#add-animate').click(function() {
+                            $('.bar-block').map(function() {
+                                $(this).text($(this).text() * 1 + 50);
+                                $(this).animate({
+                                    height: '+=50',
+                                }, 500);
+                            });
+                        });
+                    });
+                </script>
 </body>
 
 </html>
